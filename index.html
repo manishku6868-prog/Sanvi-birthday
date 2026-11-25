@@ -82,23 +82,33 @@ button:disabled{opacity:.4;cursor:not-allowed}
 @keyframes insidePop{to{opacity:1;transform:scale(1)}}
 .wish-note{font-size:clamp(17px,4vw,23px);color:var(--gold);min-height:32px}
 footer{font:10px Arial,sans-serif;color:#9f8ca8;letter-spacing:1px;margin-top:18px}
+
+.memory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px auto 8px;max-width:600px}
+.memory-card{border:1px solid #ffffff30;background:#ffffff0d;border-radius:16px;padding:8px;overflow:hidden}
+.memory-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:11px;background:linear-gradient(145deg,#523650,#241a38)}
+.memory-card figcaption{font:10px Arial,sans-serif;letter-spacing:1px;color:var(--gold);padding:9px 2px 3px}
+.memory-hint{font:11px Arial,sans-serif;color:var(--muted);line-height:1.5;margin-top:10px}
+@media(max-width:420px){.memory-grid{gap:7px}.memory-card{padding:5px}.memory-card figcaption{font-size:9px}}
+
 @media(max-width:420px){.balloon{min-height:105px;font-size:27px}.balloons{gap:7px}.cake-wrap{height:170px}.page{padding-top:68px;padding-bottom:18px}.panel{padding:20px 15px}}
 </style>
 </head>
 <body>
 <div id="stars"></div>
-<header><span class="brand">✦ A LITTLE BIRTHDAY UNIVERSE</span><span id="pageCount">01 / 07</span></header>
+<header><span class="brand">✦ A LITTLE BIRTHDAY UNIVERSE</span><span id="pageCount">01 / 08</span></header>
 <main>
 <section class="page active" id="page1">
  <div class="content panel">
-  <div class="eyebrow">A little surprise made just for you</div>
+  <div class="eyebrow">A little birthday universe made just for you</div>
   <h1>Sanvi<span class="gold">.</span></h1>
-  <h2>It's your <span class="pink">special day</span> soon!</h2>
-  <p>Six little letters, a million smiles, and one very special cousin. This tiny universe is all yours.</p>
+  <h2>The countdown to your <span class="pink">big day</span> is on ✨</h2>
+  <p>On 2 December, this little universe celebrates its favourite girl. Eight little moments, one big smile, and a surprise waiting at the very end.</p>
   <div class="countdown" id="countdown">
    <div class="timebox"><strong id="days">--</strong><span>Days</span></div><div class="timebox"><strong id="hours">--</strong><span>Hours</span></div><div class="timebox"><strong id="minutes">--</strong><span>Minutes</span></div><div class="timebox"><strong id="seconds">--</strong><span>Seconds</span></div>
   </div>
-  <div class="actions"><button class="primary" onclick="go(2)">Open your surprise ✨</button></div>
+  <div class="actions"><button class="primary" onclick="go(2)">Begin the surprise ✨</button></div>
+  <div class="actions" style="margin-top:10px"><button class="secondary" onclick="lockedLetter()">Jump to Letter 🔒</button></div>
+  <p class="memory-hint" style="margin-top:12px">P.S. The letter is locked… you'll have to enjoy every surprise to unlock it. 💌</p>
   <footer>MADE WITH LOVE · YOUR COUSIN</footer>
  </div>
 </section>
@@ -154,36 +164,138 @@ footer{font:10px Arial,sans-serif;color:#9f8ca8;letter-spacing:1px;margin-top:18
  </div>
 </section>
 
+
 <section class="page" id="page6">
+ <div class="content panel">
+  <div class="eyebrow">Little moments, big memories</div><h2>Our <span class="pink">Memories</span> 📸</h2>
+  <p>A few moments worth keeping forever. Add your favourite cousin memories here.</p>
+  <div class="memory-grid">
+   <figure class="memory-card"><img src="memory1.jpg" alt="Memory photo one"><figcaption>HAPPY MOMENTS</figcaption></figure>
+   <figure class="memory-card"><img src="memory2.jpg" alt="Memory photo two"><figcaption>GOOD TIMES</figcaption></figure>
+   <figure class="memory-card"><img src="memory3.jpg" alt="Memory photo three"><figcaption>FOREVER US</figcaption></figure>
+  </div>
+  <div class="memory-hint">Add your photos to GitHub with these exact names: memory1.jpg, memory2.jpg and memory3.jpg.</div>
+  <div class="actions"><button class="secondary" onclick="go(5)">Back</button><button class="primary" onclick="go(7)">Next: music →</button></div>
+ </div>
+</section>
+
+<section class="page" id="page7">
  <div class="content panel">
   <div class="eyebrow">A little music for you</div><h2>Your birthday <span class="gold">soundtrack</span></h2>
   <p>Press play and enjoy your special song. You can pause it whenever you like.</p>
   <div style="font-size:54px;margin:20px">♫</div>
   <audio id="birthdayAudio" src="birthday-song.mp3" preload="metadata"></audio>
-  <div class="actions"><button class="primary" id="musicToggle" onclick="toggleMusic()">Play birthday music ▶</button><button class="secondary" onclick="go(5)">Back</button><button class="primary" onclick="go(7)">Final surprise →</button></div>
+  <div class="actions"><button class="primary" id="musicToggle" onclick="toggleMusic()">Play birthday music ▶</button><button class="secondary" onclick="go(6)">Back</button><button class="primary" onclick="go(8)">Final surprise →</button></div>
   <div class="music-status" id="musicStatus" role="status">Tap play to start the music.</div>
  </div>
 </section>
 
-<section class="page" id="page7">
+<section class="page" id="page8">
  <div class="content panel">
   <div class="eyebrow">One last thing…</div><h1 class="gold">For you,<br>Sanvi.</h1>
   <h2>You make family moments brighter.</h2>
   <p>Some relations are given by family, but some people become special because of who they are. You're both, Sanvi.</p>
   <p>Keep smiling, keep shining, and never stop being your wonderfully funny self. I'm lucky to have you as my cousin and sister.</p>
   <div class="wish-note">Happy Birthday, Chipkali! 💖</div>
-  <div class="actions"><button class="secondary" onclick="go(6)">Back</button><button class="primary" onclick="go(1)">Replay the surprise ↻</button></div>
+  <div class="actions"><button class="secondary" onclick="go(7)">Back</button><button class="primary" onclick="restartSurprise()">Replay the surprise ↻</button></div>
   <footer>WITH LOVE · YOUR COUSIN</footer>
  </div>
 </section>
 </main>
 <script>
-const pageTotal=7;
+const pageTotal=8;
+
+let birthdayAudioContext=null;
+function getBirthdayAudioContext(){
+ const Ctx=window.AudioContext||window.webkitAudioContext;
+ if(!Ctx) return null;
+ if(!birthdayAudioContext) birthdayAudioContext=new Ctx();
+ if(birthdayAudioContext.state==='suspended') birthdayAudioContext.resume();
+ return birthdayAudioContext;
+}
+function playBalloonPop(){
+ const ctx=getBirthdayAudioContext(); if(!ctx) return;
+ const now=ctx.currentTime;
+ // Short noise burst for a soft balloon pop.
+ const length=Math.floor(ctx.sampleRate*.13);
+ const buffer=ctx.createBuffer(1,length,ctx.sampleRate);
+ const data=buffer.getChannelData(0);
+ for(let i=0;i<length;i++){const fade=1-i/length;data[i]=(Math.random()*2-1)*fade*fade;}
+ const noise=ctx.createBufferSource();noise.buffer=buffer;
+ const filter=ctx.createBiquadFilter();filter.type='highpass';filter.frequency.value=550;
+ const gain=ctx.createGain();gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.42,now+.008);gain.gain.exponentialRampToValueAtTime(.0001,now+.13);
+ noise.connect(filter);filter.connect(gain);gain.connect(ctx.destination);noise.start(now);noise.stop(now+.14);
+ const thump=ctx.createOscillator(),tg=ctx.createGain();thump.type='sine';thump.frequency.setValueAtTime(180,now);thump.frequency.exponentialRampToValueAtTime(65,now+.09);tg.gain.setValueAtTime(.16,now);tg.gain.exponentialRampToValueAtTime(.0001,now+.1);thump.connect(tg);tg.connect(ctx.destination);thump.start(now);thump.stop(now+.11);
+}
+function playCandleLight(){
+ const ctx=getBirthdayAudioContext(); if(!ctx) return;
+ const now=ctx.currentTime;
+ // Gentle airy ignition followed by a tiny sparkling two-note chime.
+ const osc=ctx.createOscillator(),gain=ctx.createGain(),filter=ctx.createBiquadFilter();
+ osc.type='sine';osc.frequency.setValueAtTime(520,now);osc.frequency.exponentialRampToValueAtTime(980,now+.22);
+ filter.type='lowpass';filter.frequency.value=1800;
+ gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.11,now+.035);gain.gain.exponentialRampToValueAtTime(.0001,now+.38);
+ osc.connect(filter);filter.connect(gain);gain.connect(ctx.destination);osc.start(now);osc.stop(now+.4);
+ [880,1174].forEach((freq,index)=>{const ch=ctx.createOscillator(),cg=ctx.createGain(),t=now+.18+index*.12;ch.type='sine';ch.frequency.value=freq;cg.gain.setValueAtTime(.0001,t);cg.gain.exponentialRampToValueAtTime(.055,t+.025);cg.gain.exponentialRampToValueAtTime(.0001,t+.32);ch.connect(cg);cg.connect(ctx.destination);ch.start(t);ch.stop(t+.34);});
+}
+
+let currentPage=1;
+let musicAttempted=false;
+function lockedLetter(){
+ alert("Not so fast, Sanvi! 💌 This letter is still locked. Enjoy every surprise in order and it will open at the very end. ✨");
+}
 function go(n){
+ if(!Number.isInteger(n) || n<1 || n>pageTotal) return;
+ // Going backwards is always allowed; moving forward must follow the full journey.
+ if(n>currentPage){
+  const requirements={
+   2:()=>true,
+   3:()=>document.getElementById('arrowNext') && !document.getElementById('arrowNext').disabled,
+   4:()=>popped===4,
+   5:()=>document.getElementById('wishCake').classList.contains('cake-lit'),
+   6:()=>document.getElementById('cakeSplit').classList.contains('open'),
+   7:()=>true,
+   8:()=>musicAttempted
+  };
+  for(let step=currentPage+1;step<=n;step++){
+   const check=requirements[step];
+   if(check && !check()){
+    const messages={
+     3:"First, shoot the arrow to reveal your birthday surprise! 🏹",
+     4:"Pop all four balloons first! 🎈",
+     5:"Make a wish and light the candles first! 🕯️",
+     6:"Cut the birthday cake to unlock the memories! 🎂",
+     8:"Visit the music page and press Play once to unlock your final letter. 💗"
+    };
+    alert(messages[step] || "Complete the previous surprise first! ✨");
+    return;
+   }
+  }
+ }
+ currentPage=n;
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  const target=document.getElementById('page'+n);
  if(target) target.classList.add('active');
  document.getElementById('pageCount').textContent=String(n).padStart(2,'0')+' / '+String(pageTotal).padStart(2,'0');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function restartSurprise(){
+ popped=0;musicAttempted=false;currentPage=1;
+ document.querySelectorAll('.balloon').forEach(b=>b.classList.remove('popped'));
+ document.getElementById('balloonMessage').textContent='Pop all four balloons!';
+ document.getElementById('arrowMessage').classList.remove('show');
+ document.getElementById('arrowStage').classList.remove('shoot');
+ document.getElementById('shootBtn').disabled=false;
+ document.getElementById('arrowNext').disabled=true;
+ document.getElementById('wishCake').classList.remove('cake-lit');
+ document.getElementById('cakeSplit').classList.remove('open');
+ document.getElementById('cutBtn').disabled=false;
+ document.getElementById('cutNext').disabled=true;
+ document.getElementById('wishNext').disabled=true;
+ if(!audio.paused){audio.pause();audio.currentTime=0;}
+ document.getElementById('musicToggle').textContent='Play birthday music ▶';
+ document.getElementById('musicStatus').textContent='Tap play to start the music.';
+ go(1);
 }
 function updateCountdown(){
  const now=new Date();
@@ -207,12 +319,13 @@ function shootArrow(){
 let popped=0;
 function popBalloon(btn){
  if(btn.classList.contains('popped')) return;
- btn.classList.add('popped');popped++;
+ btn.classList.add('popped');playBalloonPop();popped++;
  const left=4-popped;
  document.getElementById('balloonMessage').textContent=left?left+' balloons left':'You are a cutie! 💖';
  if(left===0) document.getElementById('balloonNext').disabled=false;
 }
 function lightCandles(){
+ if(!document.getElementById('wishCake').classList.contains('cake-lit')) playCandleLight();
  document.getElementById('wishCake').classList.add('cake-lit');
  document.getElementById('cakeSplit').classList.add('cake-lit');
  document.getElementById('wishNote').textContent='Make a wish… the candles are glowing! ✨';
@@ -227,6 +340,7 @@ function cutCake(){
 }
 const audio=document.getElementById('birthdayAudio');
 async function toggleMusic(){
+ musicAttempted=true;
  const btn=document.getElementById('musicToggle'),status=document.getElementById('musicStatus');
  if(!audio.paused){audio.pause();btn.textContent='Play birthday music ▶';status.textContent='Music paused.';return;}
  try{
